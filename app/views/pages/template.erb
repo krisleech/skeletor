@@ -1,0 +1,51 @@
+<h2><%= @document.label.capitalize %></h2>
+
+<div><%%= @document.title %></div>
+<div><%%= @document.body %></div>
+<div><%%= @document.published_at.to_s %></div>
+<div><%%= time_ago_in_words @document.published_at %></div>
+<div><%%= @document.author.name %></div>
+<%% if @document.image.exists? %>
+<div>
+  <img src="<%%= @document.image.url %>" alt="" />
+</div>
+<%% else %>
+<!-- No image -->
+<%% end %>
+
+<hr />
+
+<% @document.meta_definition.children.each do | md | %>
+<% klass = md.label %>
+<h3><%= klass.titleize.pluralize %></h3>
+<%% unless @<%= klass.pluralize %>.empty? %>
+<div id="<%= klass.pluralize  %>">
+  <%% @<%= klass.pluralize %>.each do | <%= klass %> | %>
+  <div class="<%= klass %>">
+    <h4><a href="<%%= document_path(<%= klass %>) %>"><%%= <%= klass %>.title %></a></h4>
+    <div><%%= <%= klass %>.summary %></div>
+    <div><%%= <%= klass %>.body %></div>
+    <div><%%= <%= klass %>.published_at.to_s %></div>
+    <div><%%= time_ago_in_words <%= klass %>.published_at %></div>
+    <div><%%= <%= klass %>.author.name %></div>
+    <%% if <%= klass %>.image.exists? %>
+    <img src="<%%= <%= klass %>.image.url %>" alt="" />
+    <%% else %>
+    <!-- <img src="/images/missing_<%= klass %>_picture.png" alt="" /> -->
+    <%% end %>
+  </div>
+<%% end %>
+<p><%%= will_paginate @<%= klass.pluralize %> %></p>
+</div>
+<%% else %>
+  <p>Nothing here yet!</p>
+<%% end %>
+<hr />
+<% end %>
+
+<%% content_for :debug_info do %>
+VIEW:<%%= __FILE__ %><br>
+<%% end %>
+
+<!-- Default Template Generated <%= Time.now.strftime('%d/%m/%Y %H:%M') %> -->
+<!-- By <%= (current_user || User.anonymous).name %> -->

@@ -1,0 +1,32 @@
+## YAML Template.
+
+# specify action by name, CRUD or 'all'
+# allow by role or keyword
+# if controller/action not found then access is denided
+#
+#development:
+#    documents: public
+#    doucments:
+#      read: public
+
+
+
+defaults: &defaults
+    documents: public
+    usersessions: public
+    users: public
+    passwordresets: public
+    sendmail: public
+
+    # everything under 'admin' namespace requires 'admin' role
+    admin: admin
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults   
+

@@ -1,0 +1,34 @@
+= Skeletor
+
+The Skeleton Application, contains example configuration for qcore and qcms.
+
+== Configure
+
+database.yml
+sitemap.yml
+settings.yml
+
+== Bootstrap
+
+rake qwerty:bootstrap
+
+== Later
+
+rake qwerty:cms:update_meta_definitions
+rake qwerty:cms:update_sitemap_from_db
+
+== Deployment
+
+You need to create /public/uploads folder for FCKeditor image uploads
+
+== Configure Development Tools
+
+=== XRefresh
+
+rake xrefresh:configure
+rake xrefresh:run
+Enable xrefresh panel in Firebug
+
+== Notes
+
+Versioning schema: http://semver.org

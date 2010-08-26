@@ -1,0 +1,77 @@
+<h4><%= @document.title %></h4>
+
+<div style="margin-bottom: 20px;"><%= textilize @document.summary %></div>
+
+<% @document.meta_definition.children.each do |md| %>
+
+  <h4 style="margin-top: 20px; border-bottom: 1px solid #ADBCBC;"><%= md.label.titleize.pluralize.capitalize %></h4>
+
+  <% unless md.documents.empty? %>
+    <table>
+      <tr>
+        <% md.field_map.each do |k,v| %>
+          <td><%= k.titleize %></td>
+        <% end %>
+        <th>Title</th>
+        <th>State</th>
+        <th>Author</th>
+        <% if md.record_hits? %>
+          <th>Hits</th>
+        <% end %>
+      </tr>
+      <% documents = @document.children.by_label(md.label).order_by(md.sort_by).paginate(:per_page => 20, :page => params["#{md.label}_page".to_sym]) %>
+      <% documents.each do |page| %>
+        <tr>
+          <% md.field_map.each do |k,v| %>
+            <td><%= page.send(v) %></td>
+          <% end %>
+          <td><%= truncate(page.title, :length => 40) %></td>
+          <td>
+            <% form_for page.becomes(Document), :url => admin_document_path(page.id) do |f| %>
+              <%= f.select :state, [['Published','published'], ['Draft', 'draft'], ['Pending', 'pending']] %>
+              <%= f.submit 'Change' %>
+            <% end %>
+          </td>
+          <td><%= page.author.name %></td>
+          <% if md.record_hits? %>
+            <td><%= page.hits %></td>
+          <% end %>
+          <td>
+            <%= link_to 'Open', admin_document_path(page.id), :class => 'button' %>
+          </td>
+          <td><%= link_to 'Edit', edit_admin_document_path(page.id), :class => 'button' %></td>
+          <% if md.sort_by == 'position ASC' %>
+            <td>
+              <%= link_to 'Up', up_admin_document_path(page.id), :class => 'button' unless page.first?  %>
+              <%= link_to 'Down', down_admin_document_path(page.id), :class => 'button' unless page.last?  %>
+            </td>
+          <% end %>
+          <td>
+            <% unless page.system? %>
+              <%= link_to 'Delete', admin_document_path(page.id), :method => 'delete', :confirm => 'Are you sure?', :class => 'button' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <%= will_paginate documents, :param_name => "#{md.label}_page".to_sym %>
+  <% else %>
+    <p>There are no <%= md.label.titleize.pluralize %> yet!</p>
+  <% end %>
+  <p><%= link_to 'New ', new_admin_document_path + '?parent=' + @document.id.to_s + '&label=' + md.label, :class => 'button' %></p>
+
+  <% form_for md, :url => admin_meta_definition_path(md.id) do | f | %>
+    <p><label>Sort by</label> <%= f.select :sort_by, sort_by_options, :include_blank => true %></p>
+    <p><label>Per page</label> <%= f.select :per_page, per_page_options, :include_blank => true %></p>
+    <input type="hidden" name="document_id" value ="<%= @document.id %>" />
+    <%= f.submit 'Save' %>
+  <% end %>
+<% end %>
+
+
+
+<style>
+  form.edit_meta_definition { font-size: 1em; }
+</style>
+
+

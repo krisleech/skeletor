@@ -1,0 +1,9 @@
+<style>
+  ul#pages { margin-left:20px; }
+</style>
+
+<ul>
+  <% Document.roots.public.each do | document | %>
+    <li><a href="<%= document_path(document) %>"><%= document.title %></a></li>
+  <% end %>
+</ul>

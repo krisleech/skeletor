@@ -1,0 +1,167 @@
+--- 
+meta_definitions_009: 
+  sort_by: sort_by
+  record_hits: f
+  autherisation: 
+  randomise_permalink: f
+  id: "9"
+  field_map: 
+  per_page: 
+  default_type: Document
+  body_length: 
+  default_state: 
+  body_strip_html: f
+  label_path: page
+  label: page
+  parent_id: 
+  flash_messages: 
+  position: "0"
+meta_definitions_001: 
+  sort_by: 
+  record_hits: f
+  autherisation: 
+  randomise_permalink: f
+  id: "1"
+  field_map: 
+  per_page: 
+  default_type: Document
+  body_length: 
+  default_state: 
+  body_strip_html: f
+  label_path: downloads
+  label: downloads
+  parent_id: 
+  flash_messages: 
+  position: "0"
+meta_definitions_002: 
+  sort_by: title
+  record_hits: f
+  autherisation: 
+  randomise_permalink: f
+  id: "2"
+  field_map: 
+  per_page: "10"
+  default_type: Document
+  body_length: 
+  default_state: 
+  body_strip_html: f
+  label_path: downloads/download
+  label: download
+  parent_id: "1"
+  flash_messages: 
+  position: "0"
+meta_definitions_003: 
+  sort_by: 
+  record_hits: f
+  autherisation: 
+  randomise_permalink: f
+  id: "3"
+  field_map: 
+  per_page: 
+  default_type: Document
+  body_length: 
+  default_state: 
+  body_strip_html: f
+  label_path: blog
+  label: blog
+  parent_id: 
+  flash_messages: 
+  position: "0"
+meta_definitions_004: 
+  sort_by: published_at DESC
+  record_hits: f
+  autherisation: 
+  randomise_permalink: f
+  id: "4"
+  field_map: 
+  per_page: "10"
+  default_type: Document
+  body_length: 
+  default_state: 
+  body_strip_html: f
+  label_path: blog/post
+  label: post
+  parent_id: "3"
+  flash_messages: 
+  position: "0"
+meta_definitions_005: 
+  sort_by: published_at
+  record_hits: f
+  autherisation: |
+    --- 
+    delete: admin
+    read: all
+    create: all
+    update: admin
+
+  randomise_permalink: t
+  id: "5"
+  field_map: |
+    --- 
+    name: cf_string_1
+    email: cf_string_2
+
+  per_page: "20"
+  default_type: Document
+  body_length: "255"
+  default_state: pending
+  body_strip_html: t
+  label_path: blog/post/comment
+  label: comment
+  parent_id: "4"
+  flash_messages: |
+    --- 
+    create: You comment is now awaiting approval!
+
+  position: "0"
+meta_definitions_006: 
+  sort_by: 
+  record_hits: f
+  autherisation: 
+  randomise_permalink: f
+  id: "6"
+  field_map: 
+  per_page: 
+  default_type: Document
+  body_length: 
+  default_state: 
+  body_strip_html: f
+  label_path: gallery
+  label: gallery
+  parent_id: 
+  flash_messages: 
+  position: "0"
+meta_definitions_007: 
+  sort_by: title
+  record_hits: f
+  autherisation: 
+  randomise_permalink: f
+  id: "7"
+  field_map: 
+  per_page: "10"
+  default_type: Document
+  body_length: 
+  default_state: 
+  body_strip_html: f
+  label_path: gallery/gallery
+  label: gallery
+  parent_id: "6"
+  flash_messages: 
+  position: "0"
+meta_definitions_008: 
+  sort_by: title
+  record_hits: f
+  autherisation: 
+  randomise_permalink: f
+  id: "8"
+  field_map: 
+  per_page: "10"
+  default_type: Document
+  body_length: 
+  default_state: 
+  body_strip_html: f
+  label_path: gallery/gallery/picture
+  label: picture
+  parent_id: "7"
+  flash_messages: 
+  position: "0"

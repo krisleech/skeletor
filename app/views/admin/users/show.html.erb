@@ -1,0 +1,12 @@
+<h2><%= @user.name %></h2>
+<p><%= link_to 'Edit', edit_admin_user_path(@user), :class => 'button' %></p>
+<p><label>Email:</label> <%= @user.email %></label></p>
+
+
+<p>
+  <b>Last request at:</b>
+  <%=h @user.last_request_at %>
+</p>
+
+<%= @user.roles %>
+

@@ -1,0 +1,6 @@
+<p><label>Account:</label> <%= link_to @user.account.name, account_path %></p>
+<p><label>Name:</label> <%= @user.name %></p>
+<p><label>email:</label> <%=h @user.email %></p>
+<p><label>IP address:</label> <%=h @user.current_login_ip %></p>
+
+<p><%= link_to 'Change password', edit_user_path, :class => 'button' %></p>

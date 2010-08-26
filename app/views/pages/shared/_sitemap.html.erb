@@ -1,0 +1,7 @@
+<%
+  order = document.meta_definition.children.by_label(label).first.sort_by || Settings.documents._sort_by
+  documents = document.children.by_label(label).order_by(order).public
+-%>
+<% documents.each do |d| -%>
+<li><a href='<%= document_path(d) %>'><%= d.title %></a>
+<% end -%>

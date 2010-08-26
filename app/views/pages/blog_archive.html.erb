@@ -1,0 +1,26 @@
+<div class="text left fadelinks">
+  <span class="texttop"></span>
+  <h1>Blog archive <%= params[:month] %> <%= params[:year] %><span></span></h1>
+
+  <% unless @documents.empty? %>
+    <% @documents.each do | post | %>
+      <h2><a href="<%= document_path(post) %>"><%= post.title %></a></h2>
+      <p class="clear"><%= post.summary %>. . . <span><%= post.published_at.to_s %></span></p>
+      <span class="line00"></span>
+    <% end %>
+  <% else %>
+    <h2>Sorry nothing here!</h2>
+  <% end %>
+  <span class="textbot"></span>
+</div>
+
+<div class="rightside right">
+  <span class="righttop"></span>
+  <%= render :partial => 'pages/shared/archive' %>
+  <span class="rightbot"></span>
+</div>
+
+
+<% content_for :head do %>
+  <%= auto_discovery_link_tag(:rss, "/#{@document.parent.permalink}.rss") unless @document.root? %>
+<% end %>

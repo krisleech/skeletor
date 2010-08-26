@@ -1,0 +1,35 @@
+* {
+ margin: 0px; padding: 0px;
+}
+
+#header { margin-top: 20px; }
+
+#container { width: 900px; margin:auto; }
+
+#content {
+    min-height: 400px;
+}
+
+#footer { margin-top: 20px; }
+
+ul#nav { margin-bottom: 40px; }
+
+ul#nav li { display: inline; }
+
+ul#nav li a { height: 20px; background-color: #ABC5CC; text-decoration: none; padding: 8px;}
+
+ul#nav li a:hover { color: white; background-color: #69B4C9; }
+
+ul#nav li a:visited { color: white; }
+
+p { margin-bottom: 20px; }
+
+h2, h3, h4, h5 { margin-bottom: 20px; }
+
+h4 a { text-decoration: none; }
+
+h4 a:vistied { color: black; }
+
+.story, .case_study { margin-bottom: 20px; }
+
+label { display: block;}

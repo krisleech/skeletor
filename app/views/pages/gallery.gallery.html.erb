@@ -1,0 +1,31 @@
+<h2>Gallery</h2>
+
+<div><%= @document.title %></div>
+<div><%= @document.body %></div>
+<div><%= @document.published_at.to_s %></div>
+
+<hr />
+
+<h3>Pictures</h3>
+<% unless @pictures.empty? %>
+<div id="pictures">
+  <% @pictures.each do | picture | %>
+  <div class="picture">
+    <h4><a href="<%= document_path(picture) %>"><%= picture.title %></a></h4>
+    <div><%= picture.summary %></div>
+    <div><%= picture.body %></div>
+    <div><%= picture.published_at.to_s %></div>
+    <div><%= time_ago_in_words picture.published_at %></div>
+    <div><%= picture.author.name %></div>
+    <% if picture.image.exists? %>
+    <img src="<%= picture.image.url %>" alt="" />
+    <% else %>
+    <!-- <img src="/images/missing_picture_picture.png" alt="" /> -->
+    <% end %>
+  </div>
+<% end %>
+<p><%= will_paginate @pictures %></p>
+</div>
+<% else %>
+  <p>Nothing here yet!</p>
+<% end %>

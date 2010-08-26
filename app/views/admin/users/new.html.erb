@@ -1,0 +1,9 @@
+<h1>New User</h1>
+
+<% form_for [:admin, @user] do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+  <%= f.submit "Save" %>
+<% end %>
+
+

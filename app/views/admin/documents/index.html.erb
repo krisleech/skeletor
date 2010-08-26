@@ -1,0 +1,32 @@
+<h2>Sections</h2>
+
+<table>
+  <tr>    
+    <th>Title</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @documents.each do |document| %>
+    <tr>
+      <td>
+        <%= document.title %><br />
+        <small><%= truncate(document.summary, :length => 30) %></small>
+      </td>
+      <td>
+        <a href="<%= admin_document_path(document.id) %>" class="button">Open</a>
+      </td>
+      <td><a href="<%= edit_admin_document_path(document.id) %>" class="button">Edit</a></td>
+      <td><a href="<%= new_admin_document_path + '?parent_id=' + document.id.to_s %>" class="button">Add</a></td>
+      <td>
+        <%= link_to 'Up', up_admin_document_path(document.id), :class => 'button' unless document.first?  %>
+        <%= link_to 'Down', down_admin_document_path(document.id), :class => 'button' unless document.last?  %>
+      </td>
+      <td><%= link_to 'Delete', admin_document_path(document.id), :method => 'delete', :class => 'button' %></td>
+      <td><a href="<%= document_path(document) %>" class="button">Live</a></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to 'New Page', new_admin_document_path + '?label_path=page', :class => 'button' %>
+
+

@@ -1,0 +1,41 @@
+<h4 class="contact">Contact  </h4>
+
+<div class="text">
+
+  <%= form_tag sendmail_path, :id => 'sendmail' %>
+  <ul>
+    <li><label>First name</label><input id="first_name" type="text" name ="first_name" class="required" /></li>
+    <li><label>Last name</label><input type="text" name ="last_name" class="required" /></li>
+    <li><label>Email</label><input type="text" name ="email" class="required email" /></li>
+    <li>
+      <label>Message</label>
+      <div class='counter_label'></div>
+      <textarea name="message" id="message" class="required char_limit">Type your message here...</textarea>
+    </li>
+    <li><label>&nbsp;</label><input type="submit" name="submit" value="Send message" class="submit00"/></li>
+  </ul>
+  <input type="hidden" name="meta[from]" value="bot@interkonect.com" />
+  <input type="hidden" name="meta[subject]" value="Website Enquiry" />
+  <input type="hidden" name="meta[recipients]" value="kris.leech@interkonect.com" />
+  <input type="hidden" name="meta[show_page]" value="thank_you" />
+</form>
+
+<span class="line00"></span>
+<p>Your email address will be kept confidential and used only to respond to your enquiry</p>
+
+<span class="textend"></span>
+</div>
+
+<% content_for :head do -%>
+  <%= javascript_include_tag 'jquery.counter.js' %>
+  <%= javascript_include_tag 'jquery-validate/jquery.validate.min.js' %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#first_name').focus();
+      $('.char_limit').counter({ max_length: 254 });
+      $('form#sendmail').validate();
+      $('#message').blur(function(){ if($(this).attr('value')=='') { $(this).attr('value', 'Type your message here...') } });
+      $('#message').focus(function(){ $(this).attr('value', ''); });
+    });
+  </script>
+<% end -%>

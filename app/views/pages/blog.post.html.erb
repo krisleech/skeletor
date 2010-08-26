@@ -1,0 +1,71 @@
+<h2>Post</h2>
+
+<div><%= @document.title %></div>
+<div><%= @document.body %></div>
+<div><%= @document.published_at.to_s %></div>
+<div><%= time_ago_in_words @document.published_at %></div>
+<div><%= @document.author.name %></div>
+<% if @document.image.exists? %>
+  <div>
+    <img src="<%= @document.image.url %>" alt="" />
+  </div>
+<% else %>
+  <!-- No image -->
+<% end %>
+
+<h3>Comments</h3>
+<% unless @comments.empty? %>
+  <div id="comments">
+    <% @comments.each do | comment | %>
+      <div class="comment">
+        <h4><a href="<%= document_path(comment) %>"><%= comment.title %></a></h4>
+        <div><%= comment.summary %></div>
+        <div><%= comment.body %></div>
+        <div><%= comment.published_at.to_s %></div>
+        <div><%= time_ago_in_words comment.published_at %></div>
+        <div><%= comment.author.name %></div>
+      </div>
+    <% end %>
+    <p><%= will_paginate @comments %></p>
+  </div>
+<% else %>
+  <p>Nothing here yet!</p>
+<% end %>
+<hr />
+
+
+<% if @human_test_failed %>
+  <div style="color:red;">You failed to add up the numbers correctly, please try again.</div>
+<% end %>
+
+<%= error_messages_for :document %>
+<% form_for(@new_comment || Document.new, :url => add_document_path(@document.id, 'comment')) do | f | %>
+  <%= f.error_messages %>
+  <span class="line00"></span>
+  <h3>Add a Comment</h3>
+  <ul>
+    <li><label>Name</label><%= f.text_field :cf_string_1, :class => 'required' %></li>
+    <li><label> Email</label><%= f.text_field :cf_string_2, :class => 'required email' %></li>
+    <li>
+      <label>Comment</label>
+      <div class='counter_label'></div>
+      <%= f.text_area :body, :class => 'required char_limit' %>
+    </li>
+    <li><%= render :partial => 'pages/shared/human_test' %></li>
+    <li><%= f.submit 'Submit comment', :class => 'submit00' %></li>
+  </ul>
+<% end %>
+
+<h4>Archive</h4>
+<%= render :partial => 'pages/shared/archive', :locals => { :document => Document['blog'] } %>
+
+<% content_for :head do -%>
+  <%= javascript_include_tag 'jquery.counter.js' %>
+  <%= javascript_include_tag 'jquery-validate/jquery.validate.min.js' %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.char_limit').counter({ max_length: <%= MetaDefinition.find_by_label_path('blog/post/comment').body_length %>  });
+      $('form#new_document').validate();
+    });
+  </script>
+<% end %>

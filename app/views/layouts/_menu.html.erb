@@ -1,0 +1,22 @@
+<%
+label ||= 'page'
+meta_definition = document.meta_definition.children.by_label(label).first
+order ||= meta_definition.sort_by || Settings.documents._sort_by
+limit ||= 1000
+documents = document.children.by_label(label).order_by(order).only(limit).public
+child_labels ||= nil
+-%>
+
+<% unless documents.empty? -%>
+  <% documents.each do | doc | -%>
+    <li><a href="<%= document_path(doc) %>"><%= doc.title %></a>
+      <% if child_labels -%>
+        <% child_labels.each do | label | -%>
+          <ul>
+            <%= render :partial => 'layouts/menu', :locals => { :document => doc, :label => label } %>
+          </ul>
+        <% end -%>
+      <% end -%>
+    </li>
+  <% end -%>
+<% end -%>

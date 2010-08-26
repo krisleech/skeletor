@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title><%= page_title %></title>
+    <meta http-equiv="content-type" content="text/xhtml; charset=utf-8" />
+    <%= stylesheet_link_tag("styles") %>
+    <%= javascript_include_tag 'jquery.min.js' %>
+    <%= javascript_include_tag 'application' %>
+    <%= meta_tags -%>
+    <%= yield :head  %>
+  </head>
+  <body>
+    <div id="user_nav">
+      <% if current_user %>
+        <a href="<%= logout_path %>">Logout</a>
+        <a href="/admin">Admin</a>
+      <% else %>
+        <a href="<%= login_path %>">Login</a>
+      <% end %>
+    </div>
+
+    <%= render :partial => 'layouts/search' %>
+
+    <% if flash[:notice] %>
+      <div id="flash-notice"><%= flash[:notice] %> <a href="#">Close</a></div>
+    <% end %>
+
+    <div id="header"></div>    
+
+    <div id="container">
+      <ul id="nav">
+        <% Document.public.roots.order_by('position').each do | doc | %>
+          <li style=""><a href="<%= document_path(doc) %>"><%= doc.title %></a></li>
+        <% end %>
+      </ul>
+      
+      <div id="content">
+        <%= yield %>
+      </div>
+
+      <div id="sidebar">
+        <%= yield :sidebar %>
+      </div>
+
+      <div id="footer">&copy; Copyright 2010</div>
+    </div> <!-- container -->
+
+
+    <% if RAILS_ENV == 'development' %>
+      <!-- Debug information -->
+      <div id="debug" style="z-index:-999;padding:10px;background-color: white;color:black;position:fixed;top:0px;right:0px;">        
+        <%= yield :debug_info %>
+      </div>
+    <% end %>
+  </body>
+</html>

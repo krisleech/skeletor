@@ -1,0 +1,12 @@
+<h2>Contact Form</h2>
+
+<table>
+<% @data.each do |k,v| -%>
+  <tr>
+    <td><strong><%= k.humanize.gsub(/^[a-z]|\s+[a-z]/) { |a| a.upcase } %></strong></td>
+    <td><%= v %></td>
+  </tr>
+<% end -%>
+</table>
+
+<p>Sent <%= Time.now.strftime('%d/%b/%y @ %I:%M %p') %></p>

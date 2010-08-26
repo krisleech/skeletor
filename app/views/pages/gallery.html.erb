@@ -1,0 +1,25 @@
+<h4 class="gallery">Gallery </h4>
+
+<div class="textfull">
+
+<% unless @galleries.empty? %>
+<ul class="galleries">
+  <% @galleries.each do | gallery | %>
+  <li>
+    <% if gallery.image.exists? %>
+    <a href="<%= document_path(gallery) %>"><span><img height="100" width="100" src="<%= gallery.image.url %>" alt="" /></span><%= gallery.title %></a>
+    <% else %>
+    <!-- <img src="/images/missing_gallery_picture.png" alt="" /> -->
+    <% end %>
+    
+    <div><%= gallery.summary %></div>		
+  </li>
+<% end %>
+<p><%= will_paginate @galleries %></p>
+</ul>
+<% else %>
+  <p>Nothing here yet!</p>
+<% end %>
+
+<span class="textend"></span>
+</div>

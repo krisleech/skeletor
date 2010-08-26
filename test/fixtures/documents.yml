@@ -1,0 +1,253 @@
+--- 
+documents_002: 
+  permalink: blog
+  resource_file_name: 
+  resource_description: 
+  hits: "0"
+  resource_file_size: 
+  updated_at: 2010-02-12 16:58:54
+  title: Blog
+  body: 
+  meta_definition_id: "3"
+  cf_string_1: 
+  type: Document
+  meta_keywords: 
+  cf_string_2: 
+  id: "2"
+  summary: 
+  meta_description: 
+  author_id: "1"
+  meta_title: Blog
+  published_at: 2010-02-12 16:58:54
+  label: blog
+  path: blog
+  parent_id: 
+  position: "2"
+  cf_text_1: 
+  state: published
+  resource_content_type: 
+  created_at: 2010-02-12 16:58:54
+documents_003: 
+  permalink: gallery
+  resource_file_name: 
+  resource_description: 
+  hits: "0"
+  resource_file_size: 
+  updated_at: 2010-02-12 16:58:54
+  title: Gallery
+  body: 
+  meta_definition_id: "6"
+  cf_string_1: 
+  type: Document
+  meta_keywords: 
+  cf_string_2: 
+  id: "3"
+  summary: 
+  meta_description: 
+  author_id: "1"
+  meta_title: Gallery
+  published_at: 2010-02-12 16:58:54
+  label: gallery
+  path: gallery
+  parent_id: 
+  position: "3"
+  cf_text_1: 
+  state: published
+  resource_content_type: 
+  created_at: 2010-02-12 16:58:54
+documents_004: 
+  permalink: home
+  resource_file_name: 
+  resource_description: 
+  hits: "0"
+  resource_file_size: 
+  updated_at: 2010-02-12 16:58:54
+  title: Home
+  body: 
+  meta_definition_id: "9"
+  cf_string_1: 
+  type: Document
+  meta_keywords: 
+  cf_string_2: 
+  id: "4"
+  summary: 
+  meta_description: 
+  author_id: "1"
+  meta_title: Home
+  published_at: 2010-02-12 16:58:54
+  label: page
+  path: home
+  parent_id: 
+  position: "4"
+  cf_text_1: 
+  state: published
+  resource_content_type: 
+  created_at: 2010-02-12 16:58:54
+documents_005: 
+  permalink: contact
+  resource_file_name: 
+  resource_description: 
+  hits: "0"
+  resource_file_size: 
+  updated_at: 2010-02-12 16:58:54
+  title: Contact
+  body: 
+  meta_definition_id: "9"
+  cf_string_1: 
+  type: Document
+  meta_keywords: 
+  cf_string_2: 
+  id: "5"
+  summary: 
+  meta_description: 
+  author_id: "1"
+  meta_title: Contact
+  published_at: 2010-02-12 16:58:54
+  label: page
+  path: contact
+  parent_id: 
+  position: "5"
+  cf_text_1: 
+  state: published
+  resource_content_type: 
+  created_at: 2010-02-12 16:58:54
+documents_006: 
+  permalink: sitemap
+  resource_file_name: 
+  resource_description: 
+  hits: "0"
+  resource_file_size: 
+  updated_at: 2010-02-12 16:58:54
+  title: Sitemap
+  body: 
+  meta_definition_id: "9"
+  cf_string_1: 
+  type: Document
+  meta_keywords: 
+  cf_string_2: 
+  id: "6"
+  summary: 
+  meta_description: 
+  author_id: "1"
+  meta_title: Sitemap
+  published_at: 2010-02-12 16:58:54
+  label: page
+  path: sitemap
+  parent_id: 
+  position: "6"
+  cf_text_1: 
+  state: published
+  resource_content_type: 
+  created_at: 2010-02-12 16:58:54
+documents_007: 
+  permalink: my_first_blog_post
+  resource_file_name: 
+  resource_description: ""
+  hits: "0"
+  resource_file_size: 
+  updated_at: 2010-03-02 10:19:00
+  title: My First Blog Post
+  body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, "
+  meta_definition_id: "4"
+  cf_string_1: 
+  type: Document
+  meta_keywords: ""
+  cf_string_2: 
+  id: "7"
+  summary: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, "
+  meta_description: Lorem ipsum dolor sit amet, consectetuer adipiscing
+  author_id: "1"
+  meta_title: My First Blog Post
+  published_at: 2010-03-02 00:00:00
+  label: post
+  path: blog/my_first_blog_post
+  parent_id: "2"
+  position: "1"
+  cf_text_1: 
+  state: published
+  resource_content_type: 
+  created_at: 2010-03-02 10:19:00
+documents_008: 
+  permalink: party_time
+  resource_file_name: Sexy_gal.jpg
+  resource_description: My sexy baby
+  hits: "0"
+  resource_file_size: "680064"
+  updated_at: 2010-03-02 10:38:56
+  title: Party time
+  body: <p>Woo Hoo!</p>
+  meta_definition_id: "7"
+  cf_string_1: 
+  type: Document
+  meta_keywords: ""
+  cf_string_2: 
+  id: "8"
+  summary: Woo Hoo!
+  meta_description: Woo Hoo!
+  author_id: "1"
+  meta_title: Party time
+  published_at: 2010-03-02 00:00:00
+  label: gallery
+  path: gallery/party_time
+  parent_id: "3"
+  position: "1"
+  cf_text_1: 
+  state: published
+  resource_content_type: image/jpeg
+  created_at: 2010-03-02 10:38:56
+documents_009: 
+  permalink: hold_up
+  resource_file_name: SP_A0096.jpg
+  resource_description: ""
+  hits: "0"
+  resource_file_size: "301120"
+  updated_at: 2010-03-02 10:39:52
+  title: Hold up
+  body: <p>look at this</p>
+  meta_definition_id: "8"
+  cf_string_1: 
+  type: Document
+  meta_keywords: ""
+  cf_string_2: 
+  id: "9"
+  summary: look at this
+  meta_description: look at this
+  author_id: "1"
+  meta_title: Hold up
+  published_at: 2010-03-02 00:00:00
+  label: picture
+  path: gallery/party_time/hold_up
+  parent_id: "8"
+  position: "1"
+  cf_text_1: 
+  state: published
+  resource_content_type: image/jpeg
+  created_at: 2010-03-02 10:39:52
+documents_001: 
+  permalink: downloads
+  resource_file_name: 
+  resource_description: 
+  hits: "0"
+  resource_file_size: 
+  updated_at: 2010-02-12 16:58:54
+  title: Downloads
+  body: 
+  meta_definition_id: "1"
+  cf_string_1: 
+  type: Document
+  meta_keywords: 
+  cf_string_2: 
+  id: "1"
+  summary: 
+  meta_description: 
+  author_id: "1"
+  meta_title: Downloads
+  published_at: 2010-02-12 16:58:53
+  label: downloads
+  path: downloads
+  parent_id: 
+  position: "1"
+  cf_text_1: 
+  state: published
+  resource_content_type: 
+  created_at: 2010-02-12 16:58:54

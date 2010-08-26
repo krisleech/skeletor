@@ -1,0 +1,41 @@
+--- 
+users_001: 
+  roles: admin
+  last_login_at: 2010-03-02 10:17:24
+  last_request_at: 2010-03-08 11:43:44
+  updated_at: 2010-03-08 11:43:44
+  crypted_password: 13c8d64d03308eff339ce86411f601ec831855ab568ef936dba4920be4955094d05d989190d6634ab849a04abe448f36430c46badd88476900f84943143b5707
+  single_access_token: myW0lrAW8iGA4dGIQIvK
+  perishable_token: p_52ckFpqb40i5fl6bdm
+  current_login_ip: 127.0.0.1
+  password_salt: e1LyrdpeoMiKk_KAhN_z
+  current_login_at: 2010-03-02 15:30:07
+  id: "1"
+  failed_login_count: "0"
+  persistence_token: 5b85ca5c35320f5d1296f00bcfdda8be3c230d3999a7fb672a3c9181e7a0e0a90094b2515384d662b699b440c702dd61d3c77fe7ed08fbc44db18e69b07288c2
+  login_count: "2"
+  first_name: Kris
+  last_name: Leech
+  email: kris.leech@interkonect.com
+  last_login_ip: 127.0.0.1
+  created_at: 2010-02-12 16:58:20
+users_002: 
+  roles: 
+  last_login_at: 
+  last_request_at: 
+  updated_at: 2010-02-12 16:58:20
+  crypted_password: d984a2c4428f0299bd497124063b4b10d15d04c8369ab9ba72f0d6e1ae073ef9eb7b060bd73e1396b281b0b20147db5596859a3279b5deda0340a4184ccd65bb
+  single_access_token: 3VYT1oavsJJ6zs9PYapo
+  perishable_token: nTb8jaT7olN2MTKLEW7q
+  current_login_ip: 
+  password_salt: d4Gmqt31WwfvpRwgeKZO
+  current_login_at: 
+  id: "2"
+  failed_login_count: "0"
+  persistence_token: 2fc3f544a92aa4dc9e72a292a06b644f79a101f8a6c9e00388c4e4b85e4bbf7865d88071ed25b96c2677824e4bfa9d31db102cb7e050705a5fc314cbc4a4b869
+  login_count: "0"
+  first_name: Anonymous
+  last_name: Person
+  email: anonymous@example.com
+  last_login_ip: 
+  created_at: 2010-02-12 16:58:20

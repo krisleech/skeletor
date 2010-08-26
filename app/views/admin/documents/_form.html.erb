@@ -1,0 +1,59 @@
+<table>
+  <% hide do %>
+  <tr>
+    <td width="200">Permalink</td><td><%= f.text_field :permalink %></td>
+  </tr>
+  <tr>
+    <td width="200">Path</td><td><%= f.text_field :path %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <td width="200">Title</td><td><%= f.text_field :title %></td>
+  </tr>
+  <tr>
+    <td>State</td><td><%= f.select :state, [['Published','published'], ['Draft', 'draft']] %></td>
+  </tr>
+  <tr>
+    <td>Published</td><td><%= f.date_select :published_at, :order => [:day, :month, :year] %></td>
+  </tr>
+  <tr class="heading">
+    <td colspan="2">Body</td>
+  </tr>
+  <tr>
+    <td colspan="2"><%= javascript_include_tag :fckeditor %>
+    <%= fckeditor_textarea("document", "body", :toolbarSet => 'Simple', :width => '100%', :height => '400px') %></td>
+  </tr>
+  <tr>
+    <td>Summary</td><td><%= f.text_field :summary %>  <small>This will be generated automatically if left blank</small></td>
+  </tr>
+  <tr>
+    <td>Image</td>
+    <td>
+      <%= f.file_field :resource %>
+      <%= render :partial => 'admin/documents/shared/resource_link' %>
+      <% if @document.resource.exists? %>
+        <p>Delete image: <%= f.check_box :delete_resource %></p>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>Image Description</td>
+    <td><%= f.text_field :resource_description %></td>
+  </tr>
+  <tr class="heading">
+    <td colspan="2">Meta</td>
+  </tr>
+  <tr>
+    <td>Page Title</td><td><%= f.text_field :meta_title %></td>
+  </tr>
+  <tr>
+    <td>Description</td><td><%= f.text_field :meta_description %></td>
+  </tr>
+  <tr>
+    <td>Keywords</td><td><%= f.text_field :meta_keywords %></td>
+  </tr>
+</table>
+
+<%= f.hidden_field :parent_id %>
+<%= f.hidden_field :label %>
+<%= f.hidden_field :meta_definition_id %>

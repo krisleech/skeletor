@@ -1,0 +1,17 @@
+log/**
+db/schema.rb
+db/schema.sql
+.DS_Store
+doc/
+nbproject
+tmp/**
+public/files/**
+public/.htaccess
+public/uploads
+*.sqlite3
+public/tmp/**
+nbproject
+.yardoc/
+config/database.yml
+config/settings.yml
+config/sitemap.yml

@@ -1,0 +1,32 @@
+<h1>Users</h1>
+
+<p>Users logged in: <%=  User.logged_in.count %></p>
+
+
+
+<table>
+  <tr>    
+    <th>Name</th>
+    <th>Email</th>    
+    
+    <th>Last request</th>
+    <th>Roles</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>    
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    
+    <td><%= user.last_request_at %></td>
+    <td><%= user.roles.join(', ') %></td>
+    <td><%= link_to 'Show', admin_user_path(user), :class => 'button' %></td>
+    <td><%= link_to 'Edit', edit_admin_user_path(user), :class => 'button' %></td>
+    <td><%= link_to 'Delete', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete, :class => 'button' %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<p><%= link_to 'New user', new_admin_user_path, :class => 'button' %></p>

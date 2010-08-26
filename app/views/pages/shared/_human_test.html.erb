@@ -1,0 +1,11 @@
+<%
+  v1 = rand(10)
+  v2 = rand(10)
+  a = (v1 + v2).to_s.crypt('humAn5')
+%>
+
+<li>Please answer the following question to submit your comment</li>
+<li>
+	<label><%= "#{v1} + #{v2}" %> = </label>
+	<span class="rounded"><input name="human_test[answer]" type="text" class="required" />	<input name ="human_test[crypted_answer]" type="hidden" value="<%= a %>" /></span>
+</li>

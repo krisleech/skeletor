@@ -1,0 +1,10 @@
+<h4>Edit <%= @document.label.titleize %></h4>
+<%= error_messages_for :document %>
+<% form_for @document.becomes(Document), :url => admin_document_path(@document.id), :html => { :multipart => true } do |f| %>
+  <%= render :partial => form_partial, :locals => { :f => f } %>
+  <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_cancel_document_path(@document), :class => 'button' %>
+<% end %>
+
+  <% if session[:system] %>
+  <%= form_partial %>
+  <% end %>

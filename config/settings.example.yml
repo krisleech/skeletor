@@ -1,0 +1,45 @@
+# app/config/application.yml
+defaults: &defaults
+  site:
+    name: Interkonect
+    description: Website Development and Training
+    title:
+      untitled: 'untitled' 
+      prefix: ''
+      suffix: ' :: Interkonect'
+  debug:
+    rack_bug_password: mysecret
+  forms:
+    recipients: you@example.com
+  documents:
+    page_cache: false
+    per_page: 5
+    _sort_by: 'position ASC'
+    _type: page
+    _class: Document
+    autherisation:
+      create: admin
+      read: all
+      update: admin
+      destroy: admin
+  domain: domain.com
+  mailer:
+    smtp:
+      from: bot@example.com
+      address: smtp.example.com
+      port: 25
+      user_name: USERNAME
+      password: PASSWORD
+      authentication: :login
+
+development:
+  <<: *defaults
+  domain: localhost:3000
+  
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+

@@ -1,0 +1,17 @@
+<%= f.label :first_name %><br />
+<%= f.text_field :first_name %><br />
+<%= f.label :last_name %><br />
+<%= f.text_field :last_name %><br />
+
+<%= f.label :email %><br />
+<%= f.text_field :email %><br />
+<br />
+<%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
+<%= f.password_field :password %><br />
+<br />
+<%= f.label :password_confirmation %><br />
+<%= f.password_field :password_confirmation %><br />
+
+<% %w(admin basic).each do | role | %>
+  <input name="user[roles][]" type="checkbox" value="<%= role %>" <%= "checked='checked'" if @user.has_role? role  %> /> <%= role.capitalize %><br>
+<% end %>

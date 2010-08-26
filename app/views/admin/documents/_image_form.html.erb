@@ -1,0 +1,26 @@
+<p>Title<BR/>
+  <%= f.text_field :title %>
+</p>
+
+<p>Image<BR/>
+  <%= f.file_field :resource %>
+  <%= render :partial => 'admin/documents/shared/resource_link' %>
+</p>
+
+<p>Image Description<br/>
+  <%= f.text_field :resource_description %>
+</p>
+
+<p>Description<BR/>
+  <%= f.text_area :body %>
+</p>
+
+<p>State<BR/>
+  <%= f.select :state, [['Published','published'], ['Draft', 'draft']] %>
+</p>
+
+<p>Published <BR><%= f.date_select :published_at, :order => [:day, :month, :year] %></p>
+
+<%= f.hidden_field :parent_id %>
+<%= f.hidden_field :label %>
+<%= f.hidden_field :meta_definition_id %>

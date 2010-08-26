@@ -1,0 +1,19 @@
+<% @documents.each do | document | %>
+  <div>
+    [<%= document.label.titleize %>]
+    <a href='<%= document_path(document) %>'><%= document.title %></a>
+    <%= document.summary %><BR>
+    <%= document.published_at %>
+  </div>
+<% end %>
+
+<p><%= will_paginate @documents %></p>
+
+<script>
+  // Add the query string to the pagination links
+  $(function(){
+    $('.pagination a').each(function(){
+      $(this).attr('href', $(this).attr('href') + '&search[title_like]=<%= params[:search][:title_like] %>');
+    })
+  })
+</script>

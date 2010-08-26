@@ -1,0 +1,28 @@
+<% @page_title = 'Page Not Found' %>
+<h2>Oops</h2>
+
+<p>Sorry we could not find the page you we looking for!</p>
+
+<p>Here are some alternative suggestions</p>
+
+<ul>
+  <li><a href="/sitemap">Sitemap</a></li>
+</ul>
+
+<% unless Document.with_state(:published).empty? %>
+  <h3>Recent pages</h3>
+
+
+  <p>Updated <%= time_ago_in_words Document.with_state(:published).latest.first.updated_at %> ago</p>
+
+  <ol id="latest_pages">
+    <% Document.with_state(:published).latest.only(10).each do |page| %>
+      <li>
+        [<%= page.label.titleize %>] <a href="<%= document_path(page) %>"><%= page.title %></a>
+      </li>
+    <% end %>
+  </ol>
+<% else %>
+  <p> No pages have been added yet</p>
+<% end %>
+

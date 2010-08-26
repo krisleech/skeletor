@@ -1,0 +1,29 @@
+<h4 class="news">Blog</h4>
+
+<div class="text">
+
+  <div><%= @blog.body %></div>
+
+
+  <h3>Posts</h3>
+  <div id="posts">
+    <% @posts.each do | post | %>
+      <div class="post">
+        <h4><a href="<%= document_path(post) %>"><%= post.title %></a></h4>
+        <div><%= post.summary %></div>        
+        <div><%= post.published_at.to_s %></div>
+        <div><%= time_ago_in_words post.published_at %></div>
+        <div><%= post.author.name %></div>
+        <% if post.image.exists? %>
+          <img src="<%= post.image.url %>" alt="" />
+        <% else %>
+          <!-- no image -->
+        <% end %>
+      </div>
+    <% end %>
+    <p><%= will_paginate @posts %></p>
+  </div>
+</div>
+
+<h4>Archive</h4>
+<%= render :partial => 'pages/shared/archive' %>
