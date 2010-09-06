@@ -1,12 +1,24 @@
 <table>
+
   <% hide do %>
+  <!-- It not really a good idea to allow direct editing of permalink and path -->  
   <tr>
     <td width="200">Permalink</td><td><%= f.text_field :permalink %></td>
   </tr>
   <tr>
     <td width="200">Path</td><td><%= f.text_field :path %></td>
   </tr>
+
+  <!-- extra fields -->
+  <tr>
+    <td width="200">URL</td><td><%= f.text_field :url %></td>
+  </tr>  
+  
+  <%= f.text_area :cf_text_1 %>
+  <%= f.text_field :cf_string_1 %>
+  <%= f.text_field :cf_string_1 %>
   <% end %>
+  
   <tr>
     <td width="200">Title</td><td><%= f.text_field :title %></td>
   </tr>
