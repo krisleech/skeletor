@@ -1,20 +1,18 @@
 <%
 document ||= @document
 skip_empty_months ||= true
-%>
-<% document.archive.each do | year, posts_by_month | %>
+-%>
+<% document.archive.each do | year, posts_by_month | -%>
 <ul class="submenu">
-  <h4>Blog archive</h4>
     <h4><%= year %></h4>
       <ul>
-        <% (1..12).each do | month | %>
+        <% (1..12).each do | month | -%>
           <% next if skip_empty_months && posts_by_month[month].empty? %>
           <li>
               <a href="<%= document_archive_path(document, month_name(month), year) %>"><%= month_name(month) %></a>
               <span>(<%= posts_by_month[month].size %>)</span><label></label>
           </li>
-          <% end %>
-
+          <% end -%>
       </ul>
 </ul>
-<% end %>
+<% end -%>

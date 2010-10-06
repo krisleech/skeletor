@@ -43,9 +43,17 @@
 <hr />
 <% end %>
 
-<%% content_for :debug_info do %>
-VIEW:<%%= __FILE__ %><br>
-<%% end %>
+<h3>Archive</h3>
+<% if @document.parent %>
+<%%= render :partial => 'pages/shared/archive', :locals => { :skip_empty_months => true, :document => @document.parent } %>
+<% else %>
+<%%= render :partial => 'pages/shared/archive', :locals => { :skip_empty_months => true } %>
+<% end %>
+
+<% unless @document.root? %>
+<h3>Related Pages</h3>
+<%%= render :partial => 'pages/shared/related_pages' %>
+<% end %>
 
 <!-- Default Template Generated <%= Time.now.strftime('%d/%m/%Y %H:%M') %> -->
 <!-- By <%= (current_user || User.anonymous).name %> -->
