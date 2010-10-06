@@ -1,0 +1,54 @@
+<h2>About</h2>
+
+<div><%= @document.title %></div>
+<div><%= @document.body %></div>
+<div><%= @document.published_at.to_s %></div>
+<div><%= time_ago_in_words @document.published_at %></div>
+<div><%= @document.author.name %></div>
+<% if @document.image.exists? %>
+<div>
+  <img src="<%= @document.image.url %>" alt="" />
+</div>
+<% else %>
+<!-- No image -->
+<% end %>
+
+<hr />
+
+
+
+<h3>Pages</h3>
+<% unless @pages.empty? %>
+<div id="pages">
+  <% @pages.each do | page | %>
+  <div class="page">
+    <h4><a href="<%= document_path(page) %>"><%= page.title %></a></h4>
+    <div><%= page.summary %></div>
+    <div><%= page.body %></div>
+    <div><%= page.published_at.to_s %></div>
+    <div><%= time_ago_in_words page.published_at %></div>
+    <div><%= page.author.name %></div>
+    <% if page.image.exists? %>
+    <img src="<%= page.image.url %>" alt="" />
+    <% else %>
+    <!-- <img src="/images/missing_page_picture.png" alt="" /> -->
+    <% end %>
+  </div>
+<% end %>
+<p><%= will_paginate @pages %></p>
+</div>
+<% else %>
+  <p>Nothing here yet!</p>
+<% end %>
+<hr />
+
+
+<h3>Archive</h3>
+
+<%= render :partial => 'pages/shared/archive', :locals => { :skip_empty_months => true, :document => @document.parent } %>
+
+
+
+
+<!-- Default Template Generated 06/10/2010 22:59 -->
+<!-- By Kris Leech -->
