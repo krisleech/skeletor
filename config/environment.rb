@@ -29,7 +29,7 @@ Rails::Initializer.run do |config|
   config.gem 'RedCloth'
   config.gem "state_machine", :version => '0.8.0'
   config.gem "settingslogic"
-  config.gem "searchlogic", :version => "2.0.0"
+  config.gem "searchlogic", :version => "~>2.0"
   config.gem "sanitize"
   config.gem "paperclip"
 
