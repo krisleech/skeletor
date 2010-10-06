@@ -11,6 +11,7 @@ public/uploads
 *.sqlite3
 public/tmp/**
 nbproject
+.idea/
 .yardoc/
 config/database.yml
 config/settings.yml
