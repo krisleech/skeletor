@@ -13,6 +13,7 @@ namespace :qwerty do
         end
         puts "#{doc.id} / #{meta.id} => #{counter}"
         doc.position = counter
+        doc.save!
         counter += 1
       end
     end
