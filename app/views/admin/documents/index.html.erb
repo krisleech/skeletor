@@ -11,8 +11,7 @@
         <%= document.title %>
       </td>
       <td width="72"><a href="<%= edit_admin_document_path(document.id) %>" class="button edit">Edit Page</a></td>
-      <td width="105"><a href="<%= admin_document_path(document.id) %>" class="button">Open Sub pages</a> </td>
-      <td width="40"><a href="<%= new_admin_document_path + '?parent_id=' + document.id.to_s %>" class="button">Add</a></td>
+      <td width="105"><a href="<%= admin_document_path(document.id) %>" class="button">Open Sub pages</a> </td>      
       <td width="111">
         <%= link_to 'Up', up_admin_document_path(document.id), :class => 'button up' unless document.first?  %>
         <%= link_to 'Down', down_admin_document_path(document.id), :class => 'button down' unless document.last?  %>
