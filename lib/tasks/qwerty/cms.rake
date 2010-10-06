@@ -2,6 +2,20 @@
 
 namespace :qwerty do
   namespace :cms do
+
+    task :reset_document_positions => [:environment] do
+      counter = 1
+      current_meta = nil
+      Document.process do | doc, meta |
+        if meta != current_meta
+          counter = 1
+          current_meta = meta
+        end
+        puts "#{doc.id} / #{meta.id} => #{counter}"
+        doc.position = counter
+        counter += 1
+      end
+    end
     
     task :add_view_path_code => [:environment] do
       @total = 0

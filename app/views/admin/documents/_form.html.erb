@@ -1,33 +1,20 @@
-<table>
-
-  <% hide do %>
-  <!-- It not really a good idea to allow direct editing of permalink and path -->  
+<table cellpadding="0" cellspacing="0" border="0">
+<tr class="heading"><td colspan="4"></td></tr>
   <tr>
-    <td width="200">Permalink</td><td><%= f.text_field :permalink %></td>
-  </tr>
-  <tr>
-    <td width="200">Path</td><td><%= f.text_field :path %></td>
-  </tr>
-
-  <!-- extra fields -->
-  <tr>
-    <td width="200">URL</td><td><%= f.text_field :url %></td>
-  </tr>  
-  
-  <%= f.text_area :cf_text_1 %>
-  <%= f.text_field :cf_string_1 %>
-  <%= f.text_field :cf_string_1 %>
-  <% end %>
-  
-  <tr>
-    <td width="200">Title</td><td><%= f.text_field :title %></td>
-  </tr>
+    <td width="200">Title</td><td><%= f.text_field :title %></td>  
+		<td width="200"></td><td></td>
+    </tr>
+    <tr>
+    <td>Link</td><td><%= f.text_field :permalink %></td>
+    <td>Path</td><td><%= f.text_field :path %></td>
+    </tr>
   <tr>
     <td>State</td><td><%= f.select :state, [['Published','published'], ['Draft', 'draft']] %></td>
-  </tr>
-  <tr>
+
     <td>Published</td><td><%= f.date_select :published_at, :order => [:day, :month, :year] %></td>
   </tr>
+	</table>
+	<table cellpadding="0" cellspacing="0" border="0">
   <tr class="heading">
     <td colspan="2">Body</td>
   </tr>
@@ -38,28 +25,35 @@
   <tr>
     <td>Summary</td><td><%= f.text_field :summary %>  <small>This will be generated automatically if left blank</small></td>
   </tr>
-  <tr>
-    <td>Image</td>
+	</table>
+	<table cellpadding="0" cellspacing="0" border="0">	
+	<tr class="heading"><td colspan="4">Image</td></tr>
+    <tr>
+    <td width="200">Image</td>
     <td>
       <%= f.file_field :resource %>
       <%= render :partial => 'admin/documents/shared/resource_link' %>
+		</td>
+		<td width="300">
       <% if @document.resource.exists? %>
-        <p>Delete image: <%= f.check_box :delete_resource %></p>
+        Delete image:</td><td><%= f.check_box :delete_resource %>
       <% end %>
     </td>
   </tr>
   <tr>
     <td>Image Description</td>
-    <td><%= f.text_field :resource_description %></td>
+    <td colspan="4"><%= f.text_field :resource_description %></td>
   </tr>
+ 	</table>
+	<table cellpadding="0" cellspacing="0" border="0"> 
   <tr class="heading">
     <td colspan="2">Meta</td>
   </tr>
   <tr>
-    <td>Page Title</td><td><%= f.text_field :meta_title %></td>
+    <td width="200">Page Title</td><td><%= f.text_field :meta_title %></td>
   </tr>
   <tr>
-    <td>Description</td><td><%= f.text_field :meta_description %></td>
+    <td>Description</td><td><%= f.text_area :meta_description, :rows => 5 %></td>
   </tr>
   <tr>
     <td>Keywords</td><td><%= f.text_field :meta_keywords %></td>

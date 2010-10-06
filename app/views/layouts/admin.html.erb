@@ -1,55 +1,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-  <head>
-    <title><%= @page_title || 'untitled' %></title>
-    <meta http-equiv="content-type" content="text/xhtml; charset=utf-8" />
-    <%= stylesheet_link_tag("admin/styles") %>
-    <%= javascript_include_tag 'jquery.min.js' %>
-    <%= javascript_include_tag 'application' %>
-    <%= meta_tags -%>
-    <%= yield :head  %>
-  </head>
-  <body>
+<head>
+  <title><%= @page_title || 'untitled' %></title>
+  <meta http-equiv="content-type" content="text/xhtml; charset=utf-8"/>
+  <link rel="stylesheet" href="/stylesheets/admin/styles.css" type="text/css" media="screen"/>
+  <%= javascript_include_tag 'jquery.min.js' %>
+  <%= javascript_include_tag 'application' %>
+  <%= meta_tags -%>
+  <%= yield :head %>
+</head>
+<body>
 
-    <% if flash[:notice] %>
-      <div id="flash-notice"><%= flash[:notice] %> <a href="#">Close</a></div>
-    <% end %>
+<% if flash[:notice] %>
+    <div id="flash-notice"><%= flash[:notice] %> <a href="#">Close</a></div>
+<% end %>
 
-    <div id="header">Control Panel</div>
-
-    <ul id="top_menu">    
-      <li><a href="<%= admin_dashboard_path %>">Dashboard</a></li>
-      <li><a href="<%= admin_users_path %>">Users</a></li>
-      <li><a href="<%= root_path %>">Site Homepage</a></li>
-    </ul>
-
-    <% if @document %>
+<div id="header">
+  <h2>Dash board</h2>
+  <ul class="menu">
+    <li><a href="<%= admin_dashboard_path %>">Dashboard</a></li>
+    <li><a href="<%= admin_users_path %>">Users</a></li>
+    <li><a href="<%= root_path %>">Site Homepage</a></li>
+    <li><a href="<%= logout_path %>">Logout</a></li>
+  </ul>
+  <% if @document %>
       <%= admin_bread_crumb(@document) %>
-    <% end %>
+  <% end %>
+</div>
 
-    <div id="container">
 
-      <div id="content">
-        <%= yield %>
-      </div>
+<div id="container">
 
-      <div id="sidebar">
-        <%= yield :sidebar %>
-      </div>
+  <div id="content">
+    <%= yield %>
+  </div>
 
-    </div> <!-- container -->
+  <div id="sidebar">
+    <%= yield :sidebar %>
+  </div>
 
-    <div id="footer">
-      <p>Powered by Qwerty</p>
-      <p><small>CMS <%= Qcms::VERSION %> / Core <%= Qcore::VERSION %></small></p>
-    </div>
+</div> <!-- container -->
 
-    <% if RAILS_ENV == 'development' %>
-      <!-- Debug information -->
-      <div style="padding:10px;background-color: white;color:black;position:fixed;top:0px;right:0px;">
-        <%= yield :debug_info %>
-      </div>
-    <% end %>
-  </body>
+<div id="footer"></div>
+</body>
 </html>
