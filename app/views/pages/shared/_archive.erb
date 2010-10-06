@@ -8,13 +8,13 @@ skip_empty_months ||= true
     <h4><%= year %></h4>
       <ul>
         <% (1..12).each do | month | %>
-          <% if skip_empty_months && !posts_by_month[month].empty? %>
+          <% next if skip_empty_months && posts_by_month[month].empty? %>
           <li>
               <a href="<%= document_archive_path(document, month_name(month), year) %>"><%= month_name(month) %></a>
               <span>(<%= posts_by_month[month].size %>)</span><label></label>
           </li>
           <% end %>
-        <% end %>
+
       </ul>
 </ul>
 <% end %>
