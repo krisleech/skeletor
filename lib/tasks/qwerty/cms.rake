@@ -3,6 +3,12 @@
 namespace :qwerty do
   namespace :cms do
 
+    desc 'Turn record_hits on for all meta definitions'
+    task :record_all_hits => [:environment] do
+      MetaDefinition.all.each { |md| md.record_hits = true; md.save }
+    end
+
+   desc 'Reset the position column for all documents'
     task :reset_document_positions => [:environment] do
       counter = 1
       current_meta = nil
@@ -262,21 +268,24 @@ namespace :qwerty do
         end
       end
 
-      # NOTE: If you get an 'nil' error here it is because you don't have a root document called 'page'
-      %w(home contact sitemap).each do | title |
-        unless Document.exists?(:permalink => title)
-          d=Document.new(
-            :permalink => title,
-            :author_id => User.first,
-            :title => title.titleize,
-            :state => 'published',
-            :published_at => Time.now,            
-            :meta_definition_id => MetaDefinition.find_by_label_path('page').id,
-            :label => 'page')
-          d.type = 'Document'
-          d.save!
-        else
-          puts "[SKIP] #{title} already exists"
+      # documents belonging to the page meta_definition will seem to appear in root in the admin ui
+      page_meta_def = MetaDefinition.find_by_label_path('page')
+      if page_meta_def
+        %w(home).each do | title |
+          unless Document.exists?(:permalink => title)
+            d=Document.new(
+              :permalink => title,
+              :author_id => User.first,
+              :title => title.titleize,
+              :state => 'published',
+              :published_at => Time.now,            
+              :meta_definition_id => page_meta_def.id,
+              :label => 'page')
+            d.type = 'Document'
+            d.save!
+          else
+            puts "[SKIP] #{title} already exists"
+          end
         end
       end
     end

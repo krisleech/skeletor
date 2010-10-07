@@ -21,6 +21,16 @@ namespace :qwerty do
       )
       u.roles = ['admin']
       u.save
+      
+      u=User.create(
+        :first_name => 'System',
+        :last_name => 'Person',
+        :email => 'system@example.com',
+        :password => 'system',
+        :password_confirmation => 'system'
+        )
+      u.roles = ['admin', 'system']
+      u.save
 
       p = ActiveSupport::SecureRandom.hex(16)
       u=User.create(

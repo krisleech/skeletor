@@ -23,6 +23,14 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :documents, :member => { :generate_template => :post, :preview => :get, :up => :get, :down => :get }
     admin.resources :meta_definitions
   end
+  
+  # System Routes
+  map.system_dashboard 'system', :controller => 'system/system', :action => 'dashboard'
+  map.namespace(:system) do |system|
+    system.resources :users
+    system.resources :meta_definitions, :member => { :up => :get, :down => :get }
+  end
+  
 
   map.document_search_all  '/search', :controller => 'documents', :action => 'search_all'
   map.add_document '/:id/add/:label', :controller => 'documents', :action => 'create'  
