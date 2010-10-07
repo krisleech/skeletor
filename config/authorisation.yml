@@ -16,10 +16,9 @@ defaults: &defaults
     usersessions: public
     users: public
     passwordresets: public
-    sendmail: public
-
-    # everything under 'admin' namespace requires 'admin' role
+    sendmail: public    
     admin: admin
+    system: system
 
 development:
   <<: *defaults

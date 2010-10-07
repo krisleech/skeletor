@@ -23,6 +23,6 @@ namespace :qwerty do
     Rake::Task['db:migrate'].invoke    
     Rake::Task['qwerty:core:seed'].invoke    
     Rake::Task['qwerty:cms:build_site'].invoke    
-    puts 'Hint: Use qwerty:cms:seed id=all to add some seed data'
-  end
+    puts 'Hint: Use qwerty:cms:seed ids=all to add some Lipsum content'
+  end  
 end

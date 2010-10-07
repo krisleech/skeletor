@@ -7,3 +7,12 @@
     <li><a href="<%= document_path(document) %>"><%= document.title %></a></li>
   <% end %>
 </ul>
+
+<% hide do %>  
+  # example of adding sub-pages
+  <li>News
+    <ul>
+      <%= render :partial => 'pages/shared/sitemap', :locals => { :document => Document['blog'], :label => 'post' } %>
+    </ul>
+  </li>
+<% end %>
