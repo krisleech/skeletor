@@ -13,7 +13,7 @@ namespace :qwerty do
       counter = 1
       current_meta = nil
       Document.process do | doc, meta |
-        if meta != current_meta
+        if meta != current_meta && !doc.root?
           counter = 1
           current_meta = meta
         end
@@ -61,6 +61,7 @@ namespace :qwerty do
 
     desc "Create some Lipsum entries for a section"
     task :seed => [:environment] do
+
       
       unless ENV['ids']
         puts 'Supply ids of sections to seed, ids=4,5,12 OR ids=all' 
@@ -268,7 +269,7 @@ namespace :qwerty do
         end
       end
 
-      # documents belonging to the page meta_definition will seem to appear in root in the admin ui
+      # documents in the page meta_definition will seem to appear in the root in the admin ui
       page_meta_def = MetaDefinition.find_by_label_path('page')
       if page_meta_def
         %w(home).each do | title |
