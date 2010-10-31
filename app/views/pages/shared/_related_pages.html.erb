@@ -3,7 +3,7 @@ document ||= @document
 -%>
 <% unless document.siblings.empty? -%>
   <ol id="related_pages">
-    <% document.siblings.each do | doc | -%>
+    <% Document.ordered_siblings_for(document).each do | doc | -%>
       <li><a href="<%= document_path(doc) %>"><%= doc.title %></a></li>
     <% end -%>
   </ol>
