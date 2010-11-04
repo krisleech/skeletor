@@ -17,7 +17,7 @@
         <%= link_to 'Down', down_admin_document_path(document.id), :class => 'button down' unless document.last?  %>
       </td>
       <td width="61"><a href="<%= document_path(document) %>" class="button liveweb">Live view</a></td>
-      <td width="88"><%= link_to 'Delete Page <b>X</b>', admin_document_path(document.id), :method => 'Delete Page', :class => 'button delete' %></td>
+      <td width="88"><%= link_to 'Delete Page <b>X</b>', admin_document_path(document.id), :method => 'delete', :class => 'button delete' %></td>
     </tr>
   <% end %>
 </table>
