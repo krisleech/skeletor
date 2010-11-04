@@ -6,6 +6,8 @@ See the "Wiki":http://github.com/krisleech/skeletor/wiki for more information.
 
 == Configure
 
+rake qwerty:config
+
 database.yml
 sitemap.yml
 settings.yml
