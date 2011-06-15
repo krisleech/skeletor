@@ -20,6 +20,7 @@ defaults: &defaults
 
     # everything under 'admin' namespace requires 'admin' role
     admin: admin
+    system: admin
 
 development:
   <<: *defaults
