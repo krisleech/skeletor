@@ -1,54 +1,64 @@
-<h4><%= @document.title %></h4>
+	
 
-<div style="margin-bottom: 20px;"><%= textilize @document.summary %></div>
+<h1><%= @document.title %></h1>
+
+<div><%= textilize @document.summary %></div>
 
 <% @document.meta_definition.children.each do |md| %>
-
-  <h4 style="margin-top: 20px; border-bottom: 1px solid #ADBCBC;"><%= md.label.titleize.pluralize.capitalize %></h4>
+<div class="hold">
 
   <% unless md.documents.empty? %>
-    <table>
-      <tr>
+    <table cellpadding="0" cellspacing="0" border="0">
+		<tr class="heading"><td colspan="8"><span><%= md.label.titleize.pluralize.capitalize %></span></td></tr>
+      <tr class="heading">
         <% md.field_map.each do |k,v| %>
-          <td><%= k.titleize %></td>
+          <td><span><%= k.titleize %></span></td>
         <% end %>
-        <th>Title</th>
-        <th>State</th>
-        <th>Author</th>
-        <% if md.record_hits? %>
-          <th>Hits</th>
-        <% end %>
+				<td width="80"><span>Published</span></td>
+        <td width="340"><span>Title</span></td>
+        <td width="153"><span>State</span></td>
+        <td width="120"><span>Author</span></td>
+      
+          <% if md.record_hits? %>
+            <td width="50"><span>Hits</span></td>
+          <% end %>
+
+				
       </tr>
       <% documents = @document.children.by_label(md.label).order_by(md.sort_by).paginate(:per_page => 20, :page => params["#{md.label}_page".to_sym]) %>
       <% documents.each do |page| %>
         <tr>
+      <td width="80"><span><%= page.published_at.strftime('%d / %b / %y') %></span></td>
           <% md.field_map.each do |k,v| %>
-            <td><%= page.send(v) %></td>
+            <td><span><%= page.send(v) %></span></td>
           <% end %>
-          <td><%= truncate(page.title, :length => 40) %></td>
-          <td>
+          <td width="340"><span><%= truncate(page.title, :length => 40) %></span></td>
+          
             <% form_for page.becomes(Document), :url => admin_document_path(page.id) do |f| %>
-              <%= f.select :state, [['Published','published'], ['Draft', 'draft'], ['Pending', 'pending']] %>
-              <%= f.submit 'Change' %>
+              <td width="90"><span><%= f.select :state, [['Published','published'], ['Draft', 'draft'], ['Pending', 'pending']], :class => 'pending' %></span></td>
+              <td width="53"><%= f.submit 'Update' %></td>
             <% end %>
           </td>
-          <td><%= page.author.name %></td>
+          <td width="120"><span><%= page.author.name %></span></td>
+          
           <% if md.record_hits? %>
-            <td><%= page.hits %></td>
+            <td width="50"><span><%= page.hits %></span></td>
           <% end %>
-          <td>
-            <%= link_to 'Open', admin_document_path(page.id), :class => 'button' %>
-          </td>
-          <td><%= link_to 'Edit', edit_admin_document_path(page.id), :class => 'button' %></td>
+          <td width="50"><%= link_to 'Edit', edit_admin_document_path(page.id), :class => 'button edit' %></td>
+		  <% if page.can_have_children? %>
+          <td width="70"><%= link_to 'Sub Pages', admin_document_path(page.id), :class => 'button' %></td>
+		  <% else %>
+		  <!-- no sub pages -->
+		  <% end %>
           <% if md.sort_by == 'position ASC' %>
-            <td>
-              <%= link_to 'Up', up_admin_document_path(page.id), :class => 'button' unless page.first?  %>
-              <%= link_to 'Down', down_admin_document_path(page.id), :class => 'button' unless page.last?  %>
+            <td width="123">
+              <%= link_to 'Up', up_admin_document_path(page.id), :class => 'button up' unless page.first?  %>
+              <%= link_to 'Down', down_admin_document_path(page.id), :class => 'button down' unless page.last?  %>
             </td>
           <% end %>
-          <td>
+          <td width="56">
             <% unless page.system? %>
-              <%= link_to 'Delete', admin_document_path(page.id), :method => 'delete', :confirm => 'Are you sure?', :class => 'button' %>
+              <%= link_to 'Delete <b>X</b>', admin_document_path(page.id), :method => 'delete', :confirm => 'Are you sure?', :class => 'button delete' %>
             <% end %>
           </td>
         </tr>
@@ -56,22 +66,26 @@
     </table>
     <%= will_paginate documents, :param_name => "#{md.label}_page".to_sym %>
   <% else %>
-    <p>There are no <%= md.label.titleize.pluralize %> yet!</p>
+<h2>There are no <%= md.label.titleize.pluralize %> yet!</h2>
   <% end %>
-  <p><%= link_to 'New ', new_admin_document_path + '?parent=' + @document.id.to_s + '&label=' + md.label, :class => 'button' %></p>
-
+  <h2 class="new"><%= link_to 'New', new_admin_document_path + '?parent=' + @document.id.to_s + '&label=' + md.label, :class => 'button new' %></h2>
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<tr class="heading"><td colspan="6" width="75"><span>Order Items</span></td></tr>
   <% form_for md, :url => admin_meta_definition_path(md.id) do | f | %>
-    <p><label>Sort by</label> <%= f.select :sort_by, sort_by_options, :include_blank => true %></p>
-    <p><label>Per page</label> <%= f.select :per_page, per_page_options, :include_blank => true %></p>
+    <td width="75"><span>Order by</span></td><td width="130"> <span><%= f.select :sort_by, sort_by_options, :include_blank => true %></span></td>
+    <td width="75"><span>Per page</span></td><td width="100"><span> <%= f.select :per_page, per_page_options, :include_blank => true %></span></td>
+		<td width="86">
     <input type="hidden" name="document_id" value ="<%= @document.id %>" />
-    <%= f.submit 'Save' %>
+    <%= f.submit 'Update Item List' %>
+		</td>
+</tr>
+</table>
   <% end %>
+</div>
+
 <% end %>
 
 
-
-<style>
-  form.edit_meta_definition { font-size: 1em; }
-</style>
 
 

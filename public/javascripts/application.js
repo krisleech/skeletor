@@ -1,7 +1,8 @@
 $(document).ready(function() {
 
-    // add class to all current links
-    $("a[href=" + window.location.pathname + "]").addClass('current');
+	  // add class to current link
+		$("a[href='" + location.pathname + "']").addClass("current");
+
 
     // All attribute to all Flash 
     // FireFox
@@ -30,5 +31,6 @@ $(document).ready(function() {
         $('#flash-notice').hide('slide');
     });
 });
+
 
 

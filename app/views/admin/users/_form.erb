@@ -1,17 +1,15 @@
-<%= f.label :first_name %><br />
-<%= f.text_field :first_name %><br />
-<%= f.label :last_name %><br />
-<%= f.text_field :last_name %><br />
+<table>
+<tr><td width="150"><span><%= f.label :first_name %></span></td><td><span><%= f.text_field :first_name %></span></td></tr>
+<tr><td width="150"><span><%= f.label :last_name %></span></td><td><span><%= f.text_field :last_name %></span></td></tr>
 
-<%= f.label :email %><br />
-<%= f.text_field :email %><br />
-<br />
-<%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
-<%= f.password_field :password %><br />
-<br />
-<%= f.label :password_confirmation %><br />
-<%= f.password_field :password_confirmation %><br />
+<tr><td width="150"><span><%= f.label :email %></span></td><td><span><%= f.text_field :email %></span></td></tr>
 
+<tr><td width="150"><span><%= f.label :password, f.object.new_record? ? nil : "Change password" %></span></td><td><span><%= f.password_field :password %></span></td></tr>
+
+<tr><td width="150"><span><%= f.label :password_confirmation %></span></td><td><span><%= f.password_field :password_confirmation %></span></td></tr>
+<tr>
 <% %w(admin basic).each do | role | %>
-  <input name="user[roles][]" type="checkbox" value="<%= role %>" <%= "checked='checked'" if @user.has_role? role  %> /> <%= role.capitalize %><br>
+ <td><span><%= role.capitalize %> <input name="user[roles][]" type="checkbox" value="<%= role %>" <%= "checked='checked'" if @user.has_role? role  %> /> </span></td>
 <% end %>
+</tr>
+</table>

@@ -1,0 +1,30 @@
+<table cellpadding="0" cellspacing="0" border="0">
+
+
+  <tr>
+    <td width="150"><span>Name</span></td><td><span><%= f.text_field :cf_string_1 %></span></td>
+    <td width="150"><span>Email</span></td><td><span><%= f.text_field :cf_string_2 %></span></td>
+  </tr>
+  <tr>
+    <td width="150"><span>State</span></td><td><span><%= f.select :state, [['Published','published'], ['Draft', 'draft']] %></span></td>
+    <td width="150"><span>Published</span></td><td><span><%= f.date_select :published_at, :order => [:day, :month, :year] %></span></td>
+  </tr>
+	</table>
+	<table cellpadding="0" cellspacing="0" border="0">
+  <tr class="heading">
+    <td colspan="2"><span>Body</span></td>
+  </tr>
+  <tr>
+    <td colspan="2"><%= javascript_include_tag :fckeditor 	%>
+    <span><%= fckeditor_textarea("document", "body", :toolbarSet => 'Simple', :width => '889', :height => '400px') %></span></td>
+  </tr>
+  
+	</table>
+	
+
+
+<%= f.hidden_field :parent_id %>
+<%= f.hidden_field :label %>
+<%= f.hidden_field :meta_definition_id %><% content_for :debug_info do %>
+  VIEW:<%= __FILE__ %><br>
+<% end %>

@@ -24,3 +24,7 @@
 <%= f.hidden_field :parent_id %>
 <%= f.hidden_field :label %>
 <%= f.hidden_field :meta_definition_id %>
+
+<% content_for :debug_info do %>
+VIEW:<%= __FILE__ %><br>
+<% end %>

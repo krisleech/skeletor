@@ -1,8 +1,10 @@
-<h4>Edit <%= @document.label.titleize %></h4>
+<h2>Edit <%= @document.label.titleize %></h2>
 <%= error_messages_for :document %>
 <% form_for @document.becomes(Document), :url => admin_document_path(@document.id), :html => { :multipart => true } do |f| %>
   <%= render :partial => form_partial, :locals => { :f => f } %>
-  <%= f.submit 'Save' %> or <%= link_to 'Cancel', admin_cancel_document_path(@document), :class => 'button' %>
+	<table cellpadding="0" cellspacing="0" border="0">
+  <tr><td width="70"><%= f.submit 'Save Page' %></td><td width="55"> <%= link_to 'Cancel <b>X</b>', admin_cancel_document_path(@document), :class => 'button cancel' %></td></tr>
+	</table>
 <% end %>
 
   <% if session[:system] %>

@@ -1,6 +1,6 @@
 <% resource ||= @document.resource if @document -%>
 <% if resource.exists? %>
-  <p>Already uploaded: <a href="<%= resource.url %>"><%= resource.original_filename %></a></p>
+  Already uploaded: <a href="<%= resource.url %>" class="lightlinkz"><%= resource.original_filename %></a>
 <% else %>
-  <p>Nothing uploaded yet!</p>
+  Nothing uploaded yet!
 <% end %>

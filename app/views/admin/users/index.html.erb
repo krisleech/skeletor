@@ -1,32 +1,30 @@
-<h1>Users</h1>
-
-<p>Users logged in: <%=  User.logged_in.count %></p>
+<h2>Users <%= link_to 'New user', new_admin_user_path, :class => 'button' %></h2>
 
 
 
-<table>
+
+
+<table cellpadding="0" cellspacing="0" border="0">
+<tr class="heading"><td><span>Users logged in: <%=  User.logged_in.count %></</span></td></tr>
   <tr>    
-    <th>Name</th>
-    <th>Email</th>    
+    <td width="265"><span>Name</span></td>
+    <td width="200"><span>Email</span></td>    
     
-    <th>Last request</th>
-    <th>Roles</th>
+    <td width="100"><span>Last request</span></td>
+    <td width="100"><span>Roles</span></td>
   </tr>
 
 <% @users.each do |user| %>
+<% next if user.has_role? 'system' %>
   <tr>    
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
+    <td width="265"><span><%= user.name %></span></td>
+    <td width="200"><span><%= user.email %></span></td>
     
-    <td><%= user.last_request_at %></td>
-    <td><%= user.roles.join(', ') %></td>
-    <td><%= link_to 'Show', admin_user_path(user), :class => 'button' %></td>
-    <td><%= link_to 'Edit', edit_admin_user_path(user), :class => 'button' %></td>
-    <td><%= link_to 'Delete', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete, :class => 'button' %></td>
+    <td width="100"><span><%= user.last_request_at %>&nbsp;</span></td>
+    <td width="100"><span><%= user.roles.join(', ') %>&nbsp;</span></td>
+    <td width="50"><%= link_to 'Show', admin_user_path(user), :class => 'button' %></td>
+    <td width="50"><%= link_to 'Edit', edit_admin_user_path(user), :class => 'button edit' %></td>
+    <td width="60"><%= link_to 'Delete <b>X</b>', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete, :class => 'button delete' %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<p><%= link_to 'New user', new_admin_user_path, :class => 'button' %></p>
