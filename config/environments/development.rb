@@ -17,26 +17,3 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 
 #config.reload_plugins = true
-
-config.gem 'rack-bug', :lib => 'rack/bug'
-
-config.middleware.use "Rack::Bug",
-  :secret_key => "epT5uCIchlsHCeR9dloOeAPG66PtHd9K8l0q9avitiaA/KUrY7DE52hD4yWY+8z1",
-  :password   => Settings.debug.rack_bug_password,
-  :ip_masks => nil
-
-config.gem 'bullet'
-
-config.after_initialize do
-  Bullet.enable = true
-  Bullet.alert = false
-  Bullet.bullet_logger = false
-  Bullet.console = true
-  begin
-    require 'ruby-growl'
-    Bullet.growl = true
-  rescue MissingSourceFile
-  end
-  Bullet.rails_logger = true
-  Bullet.disable_browser_cache = true
-end
